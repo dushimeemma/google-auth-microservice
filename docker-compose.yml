@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  google-auth-service:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      GOOGLE_CALLBACK_URL: ${GOOGLE_CALLBACK_URL}
+      JWT_SECRET: ${JWT_SECRET}
+    volumes:
+      - .:/usr/src/app
+    command: yarn start:prod
